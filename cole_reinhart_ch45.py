@@ -23,7 +23,58 @@ class SafeHouse(object):
 
         choice = input("> ")
 
+        if choice == "1":
+            BadOpt.scumbag()
+        elif choice == "3":
+            BadOpt.Starve()
+        
+        elif choice == "2":
+            Good.volunteer()
 
+class bad(object):
+    def scumbag(self):
+        print("You decide to take the scumbag route and steal the food")
+        print("Better than starving you think. But what about Julie?")
+        print("Survival of the fittest I suppose.")
+        print("You wait till midnight and sneak into the food supply")
+        print("As you are opening the locker you see a child about 6 years old")
+        print("He looks at you and asks, why are you taking the food?")         
+        print("You look at him, in his tore clothes and dirty face")
+        print("1. Put the food back")
+        print("2. Don't say a word, just take the food and go")
+        print("3. Ask the kid if he wants some to keep him quiet")
+
+        choice = input("> ")
+        if choice == "1":
+            do.start()
+        elif choice == "2":     
+            steal()
+
+    def Starve(self):
+        print("You try to wait out the inevitable.")
+        print("One week later. The shelter is not contaminated with an illness.")
+        print("Most importantly, Julie passed.")
+        print("There is no reason to live, you have no will.")
+        print("After a day of crying about Julie's passing you go insane.")
+        print("Eventually you become suicidal and open the shelter door and the whole compound is flooded with zombies...")
+        print("YOU HAVE DIED")
+        print("play again?")
+        choice = input("> ")
+        if choice == "yes":
+            do.start()
+        else:
+            exit(0)
+
+class good(object):
+    def volunteer(self):
+        print("You decide to go outside, a place you aren't familiar with anymore.")
+        print("You tell the survivors that you are going out to get supplies.")
+        print("They tell you its dangerous and you might not come back.")
+        print("But it is almost better than starving in here.")
+        print("Julie tells you to be safe and ")
+
+BadOpt = bad()
+Good = good()
 
 do = SafeHouse()
 
