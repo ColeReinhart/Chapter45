@@ -25,6 +25,7 @@ class SafeHouse(object):
 
         if choice == "1":
             BadOpt.scumbag()
+
         elif choice == "3":
             BadOpt.Starve()
         
@@ -47,8 +48,13 @@ class bad(object):
         choice = input("> ")
         if choice == "1":
             do.start()
+
         elif choice == "2":     
-            steal()
+            BadOpt.steal()
+        
+        elif choice == "3":
+            BadOpt.bribe()
+
 
     def Starve(self):
         print("You try to wait out the inevitable.")
@@ -65,13 +71,118 @@ class bad(object):
         else:
             exit(0)
 
+    def steal(self):
+        print("You trudge off past the kid.")
+        print("The whole room is asleep, since they don't have the strength to stay awake.")
+        print("Once you get close to the door and the kid screams to wake up everyone to stop you.")
+        print("He is stealing the food! he screamed")
+        print("In panic, you run to open the door and leave.")
+        print("When you open the door zombies heard the scream and surrounded the building.")
+        print("Before you can leave you area swarmed by the zombies and the whole shelter is infected.")
+        print("YOU HAVE DIED")
+        print("Play Again?")
+        choice = input("> ")
+        if choice == "yes":
+            do.start()
+        else:
+            exit(0)
+
+    def bribe(self):
+        print("The kid looks at you confused.")
+        print("But like everyone here he is starving.")
+        print("You give him some rations and he runs off")
+        print("You make your way to the door, holding whats left of the rations.")
+        print("You want to take Julie with, but you know she would not condone you actions.")
+        print("So you head towards the door, rations over your back in a sack.")
+        print("As soon as you open the door, the guard wakes up.")
+        print("You notice and hurry out the door.")
+        print("You close the door and run")
+        print("You can't see due to the nighttime darkness and lack of electricity for the street lights.")
+        print("Where do you run?")
+        print("1. Grocery store")
+        print("2. Your old home")
+
+        choice = input("> ")
+
+        if choice == "1":
+            good.store()
+        elif choice == "2":
+            BadOpt.home()
+
+
+    def home(self):
+        print("You break away from the shelter.")
+        print("You would rather die out here than in there anyway.")
+        print("You want to see your home, you miss it.")
+        print("As a 20 year old college student, you feel like you haven't spent enough time there.")
+        print("So you go back there one last time.")
+        print("You sneak past some zombies with out being noticed and 20 minutes later you are faced with you fron door step.")
+        print("Nervous. You walk inside.")
+        print("Blood smeared on the walls, but other than the mess from obvious struggle, it's just as you left it.")
+        print("The day everything went down was the day you came home from school for break.")
+        print("You remember opening the door to your parents packing frantically.")
+        print("FLASHBACK")
+        print("Mom? Dad? Whats going on!")
+        print("Pack your things were leaving!")
+        print("Mom! what is happening?")
+        print("ARGHH!")
+        print("Dad what's going on back there?!")
+        print("Your brother bit me! He's infected, Shit!")
+        print("Infected? Mom what does he mean!")
+        print("WE NEED TO GO! NOW")
+        print("END FLASHBACK")
+        print("You see the corpses of your mother and father....")
+        print("You hear banging on your brothers door and growling...")
+        print("Brother?")
+        print("The door breaks open and he attacks you.")
+        print("You do not have any items to protect yourself and he gets a bite on you.")
+        print("Your vision fades as you wish you made better life choices.")
+        print("YOU HAVE DIED!")
+        print("Play Again?")
+
+        choice = input("> ")
+        if choice == "yes":
+            do.start()
+        else:
+            exit(0)
+
 class good(object):
     def volunteer(self):
         print("You decide to go outside, a place you aren't familiar with anymore.")
         print("You tell the survivors that you are going out to get supplies.")
         print("They tell you its dangerous and you might not come back.")
         print("But it is almost better than starving in here.")
-        print("Julie tells you to be safe and ")
+        print("Julie tells you to be safe and that she is too ill to accompany you.")
+        print("The front door guard wishes you luck and hands you a glock 9mm handgun and a clip with 8 bullets.")
+        print("Sorry but that all we have left, were really depending on you.")
+        print("You are on your way.")
+        print("When you open the door and exit the safe house, the sun blinds you a bit.")
+        print("Disoriented, you start walking, listening for zombie growls.")
+        print("You regain you eyesight but it has been a while since you ran so you balence is a little off.")
+        print("After about 3 minutes of walking past broken and empty houses, you spot the undead approaching you.")
+        print("There is 3 Zombies. They haven't spotted you.... yet. Time to act.")
+        print("1. Take cover behind a bush, hope that they can't smell your scent.")
+        print("2. Open fire on the zombies")
+        print("3. Run away")
+
+        choice = input("> ")
+
+        if choice == "1":
+            cover
+        elif choice == "2":
+            shoot
+        elif choice == "3":
+            run
+
+    def store(self):
+        print("It's dark outside, Which means you are as hard to see as the zombies.")
+        print("Based on this logic you decide to head to the grocery store.")
+        print("You see some zombies walking toward your direction.")
+        print("There is 3 Zombies. They haven't spotted you.... yet. Time to act.")
+        print("1. Take cover behind a bush, hope that they can't smell your scent.")
+        print("2. Fight them")
+        print("3. Run away")
+
 
 BadOpt = bad()
 Good = good()
