@@ -30,7 +30,11 @@ class SafeHouse(object):
             BadOpt.Starve()
         
         elif choice == "2":
-            Good.volunteer()
+            good.volunteer()
+        else:
+            print("TRY AGAIN")
+            do.start()
+
 
 class bad(object):
     def scumbag(self):
@@ -55,10 +59,13 @@ class bad(object):
         elif choice == "3":
             BadOpt.bribe()
 
+        else:
+            print("TRY AGAIN")
+            BadOpt.scumbag()
 
     def Starve(self):
         print("You try to wait out the inevitable.")
-        print("One week later. The shelter is not contaminated with an illness.")
+        print("One week later. The shelter is now contaminated with an illness.")
         print("Most importantly, Julie passed.")
         print("There is no reason to live, you have no will.")
         print("After a day of crying about Julie's passing you go insane.")
@@ -108,6 +115,9 @@ class bad(object):
             good.store()
         elif choice == "2":
             BadOpt.home()
+        else:
+            print("TRY AGAIN")
+            BadOpt.bribe()
 
 
     def home(self):
@@ -163,16 +173,19 @@ class good(object):
         print("There is 3 Zombies. They haven't spotted you.... yet. Time to act.")
         print("1. Take cover behind a bush, hope that they can't smell your scent.")
         print("2. Open fire on the zombies")
-        print("3. Run away")
 
         choice = input("> ")
 
         if choice == "1":
-            cover
+            global gun
+            gun = "true"
+            good.path()
         elif choice == "2":
-            shoot
-        elif choice == "3":
-            run
+            good.shoot()
+        else:
+           print("TRY AGAIN")
+           good.volunteer()
+
 
     def store(self):
         print("It's dark outside, Which means you are as hard to see as the zombies.")
@@ -181,11 +194,65 @@ class good(object):
         print("There is 3 Zombies. They haven't spotted you.... yet. Time to act.")
         print("1. Take cover behind a bush, hope that they can't smell your scent.")
         print("2. Fight them")
-        print("3. Run away")
+    
+        choice = input("> ")
 
+        if choice == "1":
+            global gun
+            gun = "false"
+            good.path()
+        
+    def path(self):
+        print("You hide behind the bush, luckily you make it without being seen.")
+        print("The store shouldn't be that far now, just need to keep going")
+        print("You make it to the store after a vigorous journey around numerous zombies.")
+        print("The store looks dark with out the lights on.")
+        print("You walk inside the store to see the store was almost picked clean.")
+        print("There has to be more you think to yourself")
+        print("Out of nowhere a zombie springs up behind you")
+        #Here i want to make a split between the two paths to get here whether you have the gun or not
+        if gun == "true":
+            good.win()
+        else:
+            print("You have no weapon to defend yourself")
+            print("The zombie gets the best of you.")
+            print("YOU HAVE DIED!")
+            print("Play Again?")
+
+            choice = input("> ")
+            if choice == "yes":
+                do.start()
+            else:
+                exit(0)
+
+    def shoot(self):
+        print("You open fire on the zombies.")
+        print("You aren't the best with a gun, but you manage to ping the zombies in the head.")
+        print("Using all the ammo, you put the zombies down.")
+        print("You know that you have been heard, now you really have to move.")
+        print("Zombies are walking in packs now, I need to hide behind something for safety.")
+        global gun
+        gun = "false"
+        good.path()
+
+    def win(self):
+        print("You have the gun with ammo still.")
+        print("You shoot the zombie before he can bite you.")
+        print("Your shots provoked other zombies.")
+        print("Your back against the wall, you are standing your ground against a horde of zombies.")
+        print("You hear a yell from the back of the store.")
+        print("A survivor! Everyone we gotta horde!")
+        print("You look to the back of the store and see a group of armed surviviors.")
+        print("You and the group manage to kill the horde unscathed.")
+        print("They talk to you about your shelter and they agree to help")
+        print("Turns out they have all the food in the back and have years worth of supplies.")
+        print("After making it back to your shelter, you spread the supplies and heal the other survivors.")
+        print("One week later the military comes and saves the town.")
+        print("Also Julie is totally diggin your courage so do with that what you will.")
+        print("YOU WIN!")
 
 BadOpt = bad()
-Good = good()
+good = good()
 
 do = SafeHouse()
 
