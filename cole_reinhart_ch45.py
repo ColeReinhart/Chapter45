@@ -3,6 +3,7 @@
 ## much like the walking dead but not quite because im still a scrub
 ## I call this game Zombocolyptic
 
+import random
 
 class SafeHouse(object):
 
@@ -24,19 +25,19 @@ class SafeHouse(object):
         choice = input("> ")
 
         if choice == "1":
-            BadOpt.scumbag()
+            bad_option.scumbag()
 
         elif choice == "3":
-            BadOpt.Starve()
+            bad_option.Starve()
         
         elif choice == "2":
-            good.volunteer()
+            good_option.volunteer()
         else:
             print("TRY AGAIN")
-            do.start()
+            begin.start()
 
 
-class bad(object):
+class Bad(object):
     def scumbag(self):
         print("You decide to take the scumbag route and steal the food")
         print("Better than starving you think. But what about Julie?")
@@ -51,17 +52,17 @@ class bad(object):
 
         choice = input("> ")
         if choice == "1":
-            do.start()
+            begin.start()
 
         elif choice == "2":     
-            BadOpt.steal()
+            bad_option.steal()
         
         elif choice == "3":
-            BadOpt.bribe()
+            bad_option.bribe()
 
         else:
             print("TRY AGAIN")
-            BadOpt.scumbag()
+            bad_option.scumbag()
 
     def Starve(self):
         print("You try to wait out the inevitable.")
@@ -70,11 +71,11 @@ class bad(object):
         print("There is no reason to live, you have no will.")
         print("After a day of crying about Julie's passing you go insane.")
         print("Eventually you become suicidal and open the shelter door and the whole compound is flooded with zombies...")
-        print("YOU HAVE DIED")
+        on_death.story_line()
         print("play again?")
         choice = input("> ")
         if choice == "yes":
-            do.start()
+            begin.start()
         else:
             exit(0)
 
@@ -86,11 +87,11 @@ class bad(object):
         print("In panic, you run to open the door and leave.")
         print("When you open the door zombies heard the scream and surrounded the building.")
         print("Before you can leave you area swarmed by the zombies and the whole shelter is infected.")
-        print("YOU HAVE DIED")
+        on_death.story_line()
         print("Play Again?")
         choice = input("> ")
         if choice == "yes":
-            do.start()
+            begin.start()
         else:
             exit(0)
 
@@ -112,12 +113,12 @@ class bad(object):
         choice = input("> ")
 
         if choice == "1":
-            good.store()
+            good_option.store()
         elif choice == "2":
-            BadOpt.home()
+            bad_option.home()
         else:
             print("TRY AGAIN")
-            BadOpt.bribe()
+            bad_option.bribe()
 
 
     def home(self):
@@ -147,16 +148,16 @@ class bad(object):
         print("The door breaks open and he attacks you.")
         print("You do not have any items to protect yourself and he gets a bite on you.")
         print("Your vision fades as you wish you made better life choices.")
-        print("YOU HAVE DIED!")
+        on_death.story_line()
         print("Play Again?")
 
         choice = input("> ")
         if choice == "yes":
-            do.start()
+            begin.start()
         else:
             exit(0)
 
-class good(object):
+class Good(object):
     def volunteer(self):
         print("You decide to go outside, a place you aren't familiar with anymore.")
         print("You tell the survivors that you are going out to get supplies.")
@@ -179,12 +180,12 @@ class good(object):
         if choice == "1":
             global gun
             gun = "true"
-            good.path()
+            good_option.path()
         elif choice == "2":
-            good.shoot()
+            good_option.shoot()
         else:
            print("TRY AGAIN")
-           good.volunteer()
+           good_option.volunteer()
 
 
     def store(self):
@@ -200,7 +201,7 @@ class good(object):
         if choice == "1":
             global gun
             gun = "false"
-            good.path()
+            good_option.path()
         
     def path(self):
         print("You hide behind the bush, luckily you make it without being seen.")
@@ -212,16 +213,16 @@ class good(object):
         print("Out of nowhere a zombie springs up behind you")
         #Here i want to make a split between the two paths to get here whether you have the gun or not
         if gun == "true":
-            good.win()
+            good_option.win()
         else:
             print("You have no weapon to defend yourself")
             print("The zombie gets the best of you.")
-            print("YOU HAVE DIED!")
+            on_death.story_line()
             print("Play Again?")
 
             choice = input("> ")
             if choice == "yes":
-                do.start()
+                begin.start()
             else:
                 exit(0)
 
@@ -233,7 +234,7 @@ class good(object):
         print("Zombies are walking in packs now, I need to hide behind something for safety.")
         global gun
         gun = "false"
-        good.path()
+        good_option.path()
 
     def win(self):
         print("You have the gun with ammo still.")
@@ -251,9 +252,20 @@ class good(object):
         print("Also Julie is totally diggin your courage so do with that what you will.")
         print("YOU WIN!")
 
-BadOpt = bad()
-good = good()
+class Death(object):
 
-do = SafeHouse()
+    def story_line(self):
+        quotes = [
+            "You dead",
+            "So dead",
+            "Very dead"
+        ]
+        print(random.choice(quotes))
 
-do.start()
+bad_option = Bad()
+good_option = Good()
+on_death = Death()
+begin = SafeHouse()
+
+begin.start()
+on_death.story_line()
