@@ -4,7 +4,7 @@
 ## I call this game Zombocolyptic
 
 import random
-
+import death_quote
 class SafeHouse(object):
 
     def start(self):
@@ -71,7 +71,7 @@ class Bad(object):
         print("There is no reason to live, you have no will.")
         print("After a day of crying about Julie's passing you go insane.")
         print("Eventually you become suicidal and open the shelter door and the whole compound is flooded with zombies...")
-        on_death.story_line()
+        death_quote.story_line(self)
         print("play again?")
         choice = input("> ")
         if choice == "yes":
@@ -87,7 +87,7 @@ class Bad(object):
         print("In panic, you run to open the door and leave.")
         print("When you open the door zombies heard the scream and surrounded the building.")
         print("Before you can leave you area swarmed by the zombies and the whole shelter is infected.")
-        on_death.story_line()
+        death_quote.story_line(self)
         print("Play Again?")
         choice = input("> ")
         if choice == "yes":
@@ -148,7 +148,7 @@ class Bad(object):
         print("The door breaks open and he attacks you.")
         print("You do not have any items to protect yourself and he gets a bite on you.")
         print("Your vision fades as you wish you made better life choices.")
-        on_death.story_line()
+        death_quote.story_line(self)
         print("Play Again?")
 
         choice = input("> ")
@@ -217,7 +217,7 @@ class Good(object):
         else:
             print("You have no weapon to defend yourself")
             print("The zombie gets the best of you.")
-            on_death.story_line()
+            death_quote.story_line(self)
             print("Play Again?")
 
             choice = input("> ")
@@ -252,20 +252,10 @@ class Good(object):
         print("Also Julie is totally diggin your courage so do with that what you will.")
         print("YOU WIN!")
 
-class Death(object):
 
-    def story_line(self):
-        quotes = [
-            "You dead",
-            "So dead",
-            "Very dead"
-        ]
-        print(random.choice(quotes))
 
 bad_option = Bad()
 good_option = Good()
-on_death = Death()
 begin = SafeHouse()
 
 begin.start()
-on_death.story_line()
